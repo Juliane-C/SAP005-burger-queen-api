@@ -7,7 +7,7 @@ const port = 4000;
 app.use('/', routes);
 
 app.get('*', (req, res) => {
-  res.send('Hello World!');
+  res.send('Bem-Vindx a Hello Burguer API!');
 });
 
 app.listen(port, () => {
