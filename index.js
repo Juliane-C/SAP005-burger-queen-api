@@ -1,17 +1,13 @@
 const express = require('express');
 const routes = require('./server/routes/index');
-// const cors = require('cors');
 
 const app = express();
-const port = process.env.port || 3007;
+const port = 3000;
 
-// app.use(cors());
-
-app.use(express.json());
 app.use('/', routes);
 
 app.get('*', (req, res) => {
-  res.send('Bem-Vindx a Hello Burguer API!');
+  res.send('Hello World!');
 });
 
 app.listen(port, () => {
