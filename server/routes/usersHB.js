@@ -5,8 +5,8 @@ const router = Router();
 
 // aqui vai as requisições da rota de users
 router.get('/', UsersController.getAllUsers);
+router.post('/createUser', UsersController.getAllUsers);
 // router.get('/:idUser', UsersController.getUserById);
-// router.post('/createUser', UsersController.createNewUser);
 // router.put('/:idUser', UsersController.updateUser);
 // router.delete('/:idUser', UsersController.deleteUser);
 

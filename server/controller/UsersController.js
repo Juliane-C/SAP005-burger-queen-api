@@ -1,15 +1,64 @@
 // aqui vai o código que acessa o banco de dados
-const db = require('../db/models/users');
+const Db = require('../db/models');
 
-class UsersController {
-  static async getAllUsers(req, res) {
-    const usersAPI = await db.Users.findAll({
+const getAllUsers = async (req, res) => {
+  try {
+    const usersAPI = await Db.Users.findAll({
       attributes: { exclude: ['password'] },
     });
-    return res.status(200).json(usersAPI);
+    res.status(200).json(usersAPI);
+  } catch (error) {
+    res.status(400).json({ error: 'Opa! Tem algo de errado na requisição.' });
   }
+};
 
-  /* static async getUserById(req, res) {
+const createNewUser = async (req, res) => {
+  try {
+    const { firstName, lastName, email, password, role, restaurant } = req.body;
+    const newUser = await Db.Users.create({
+      firstName,
+      lastName,
+      email,
+      password,
+      role,
+      restaurant,
+    });
+    res.status(201).json(newUser);
+  } catch (error) {
+    res
+      .status(400)
+      .json({ error: 'Opa! Não foi possível cadastrar o usuário.' });
+  }
+};
+
+module.exports = { getAllUsers, createNewUser };
+
+/* const updateUser = async (req, res) => {
+  try {
+    const { firstName, lastName, email, password, role } = req.body;
+    const upUser = await Db.Users.update(
+      {
+        firstName,
+        lastName,
+        email,
+        password,
+        role,
+      },
+      {
+        where: {
+          id: req.params.uid,
+        },
+      }
+    );
+    res.status(200).json(upUser);
+  } catch (error) {
+    res
+      .status(400)
+      .json({ error: 'Opa! Não foi possível atualizar o cadastro.' });
+  }
+}; */
+
+/* static async getUserById(req, res) {
     const { idUser } = req.params;
     const userID = await db.Users.findAll({
       where: {
@@ -17,33 +66,13 @@ class UsersController {
       },
     });
     return res.status(200).json(userID);
-  } */
-}
-
-/* const createNewUser = (req, res) => {
-  console.log('você também pode utilizar o console para visualizar =)');
-  res.send('Request feita para criar usuário');
-};
-
-const updateUser = (req, res) => {
-  console.log('você também pode utilizar o console para visualizar =)');
-  res.send('Request feita para atualização de usuário');
-};
-
-const getUserById = (req, res) => {
-  console.log('você também pode utilizar o console para visualizar =)');
-  res.send('Request feita para pegar o usuário pelo id.');
-};
+  }
 
 const deleteUser = (req, res) => {
   console.log('você também pode utilizar o console para visualizar =)');
   res.send('Request feita para deletar o usuário do banco');
 };
  */
-
-module.exports = UsersController;
-
-/* {createNewUser,
-  updateUser,
+/* {updateUser,
   getUserById,
-  deleteUser,} */
+  deleteUser} */
