@@ -5,7 +5,7 @@ const routes = require('./server/routes/index');
 // const cors = require('cors');
 
 const app = express();
-const port = process.env.port || 3000;
+const port = process.env.PORT || 7003;
 
 // app.use(cors());
 
