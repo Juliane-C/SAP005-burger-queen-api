@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
 require('dotent').config(); // chama a variável de ambiente.
-
 const express = require('express');
 const routes = require('./server/routes/index');
 // const cors = require('cors');
