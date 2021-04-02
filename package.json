@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Laboratoria/SAP005-burger-queen-api#readme",
   "dependencies": {
     "cli": "^1.0.1",
+    "dotenv": "^8.2.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "express": "^4.17.1",
